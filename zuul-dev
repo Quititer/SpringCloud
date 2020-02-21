@@ -1,0 +1,39 @@
+#更改默认端口号
+server.port=6665
+#设置注册中心的url
+eureka.client.serviceUrl.defaultZone=http://localhost:6661/eureka
+#同时将自己注册到注册中心
+eureka.client.register-with-eureka=true
+#主动从注册中心上获得注册信息
+eureka.client.fetch-registry=true
+
+#zuul路由规则设置
+zuul.routes.api-a.path=/add
+# serviceId 配合上面使用 上面拦截的请求都会转发到这个服务上。
+zuul.routes.api-a.serviceId=pojo
+
+#zuul路由规则设置
+zuul.routes.api-a.path=/delete
+# serviceId 配合上面使用 上面拦截的请求都会转发到这个服务上。
+zuul.routes.api-a.serviceId=pojo
+
+#zuul路由规则设置
+zuul.routes.api-a.path=/update
+# serviceId 配合上面使用 上面拦截的请求都会转发到这个服务上。
+zuul.routes.api-a.serviceId=pojo
+
+#zuul路由规则设置
+zuul.routes.api-a.path=/findAll
+# serviceId 配合上面使用 上面拦截的请求都会转发到这个服务上。
+zuul.routes.api-a.serviceId=pojo
+
+# 第二种 路由规则配置  zuul.routes.服务名称  = 规则路径 
+zuul.routes.eureka-client=/bbbbbb/**
+
+# 会话保持问题：由于我们一开始访问的是9004,由9004转发到9002上,这样会导致会话中cookie丢失
+# 解决方式为： zuul.sensitive-headers=  来配置忽略请求头的信息设置为空
+zuul.sensitive-headers=
+# 设置保持host头部信息正确处理,
+zuul.add-host-headers=true
+
+
